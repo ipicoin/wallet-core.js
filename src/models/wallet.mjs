@@ -3,14 +3,41 @@ import { URL } from "node:url"
 import path from "node:path"
 
 class Wallet{
-    get keyfile(){
+    getBallance(){
+
+    }
+    readAddress(){
+
+    }
+    saveKeyfile(keyPath=){
 
         return 
     }
-    set keyfile(){
+    loadKeyfile(){
+
+    }
+    loadMnemonic(){
 
     }
     constructor(){
 
+    }
+    sendTransmission(){
+
+    }
+    listTransmissions(){
+
+    }
+    listReceivings(){
+        
+    }
+    static load(keypath){
+        return new Wallet()
+    }
+    static save(walletitem, keypath){
+        return keypath
+    }
+    static create(){
+        return new Wallet()
     }
 }
