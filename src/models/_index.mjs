@@ -23,10 +23,10 @@
 import CoreModels from "./_core.mjs";
 
 import Address from "./address.mjs";
-import Wallet from "./wallet.mjs";
 import Contract from "./contract.mjs";
 import Request from "./request.mjs";
 import Transaction from "./transaction.mjs";
+import Wallet from "./wallet.mjs";
 
 export default Object.assign(CoreModels, {
 	/*

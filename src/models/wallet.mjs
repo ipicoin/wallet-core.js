@@ -17,14 +17,18 @@
   for further growth and evolution of IPI DAO (https://ipi.io/) 
 */
 import fs from "node:fs";
-import { URL } from "node:url";
 import path from "node:path";
+import { URL } from "node:url";
 
 import CoreModels from "./_core.mjs";
 
 // becoming to be shaped under outlines of some concept of usage logics, yet it still do nothing spectacular
 
 class Wallet extends CoreModels {
+	
+	static get COIN_TYPE(){
+		return CoreModels.CHAIN.bip44.coinType
+	}
 	getBallance() {}
 	readAddress() {}
 	saveKeyfile(keyPath) {
