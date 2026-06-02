@@ -20,5 +20,4 @@
 
   for further growth and evolution of IPI DAO (https://ipi.io/) 
 
-
 ```
