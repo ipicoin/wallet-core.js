@@ -19,9 +19,9 @@
   - https://github.com/ipicoin/.github/blob/ac7d86625f46ef3e53aeea51931b96ea75ed87be/statements/BRANDING_NOTICE.md
 */
 
-import { expect, test } from 'vitest'
-import f from '../../src/models/request.mjs'
+import { expect, test } from "vitest";
+import f from "../../src/models/request.mjs";
 
-test('...', () => {
-  expect(f).toBeDefined()
-})
+test("...", () => {
+	expect(f).toBeDefined();
+});
