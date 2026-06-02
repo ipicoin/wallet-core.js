@@ -2,6 +2,8 @@ import fs from "node:fs"
 import { URL } from "node:url"
 import path from "node:path"
 
+// becoming to be shaped under outlines of some concept of usage logics, yet it still do nothing spectacular
+
 class Wallet{
     getBallance(){
 

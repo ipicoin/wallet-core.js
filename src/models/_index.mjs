@@ -4,7 +4,13 @@ import Contract from "./contract.mjs"
 import Request from "./request.mjs"
 import Transaction from "./transaction.mjs"
 
-export default class IPI_Models{
+export default class IPI_Models{ // IPI_models as base for rest of them
+    /*
+    this class shall provide extensible base for all model classes
+    that should make it verification root parrent shared 
+    across package beside containing unit that 
+    allows access to all classes 
+    */
     static check(instance, checkname){
         switch(checkname){
             case "is-wallet":
