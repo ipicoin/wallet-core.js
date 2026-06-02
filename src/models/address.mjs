@@ -21,8 +21,15 @@
 */
 // lack of code, nothing to do
 
-class Address{
+import CoreModels from "./_core.mjs"
 
+class Address extends CoreModels{
+  constructor(){
+    super()
+  }
+  isPublicAddressValid(addressString){
+    addressString
+  }
 }
 
 export default Address
