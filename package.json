@@ -2,6 +2,7 @@
   "name": "ipi-wallet-core",
   "version": "0.1.1",
   "description": "IPI core of wallet package",
+  "BRANDING_NOTICE":"https://github.com/ipicoin/.github/blob/ac7d86625f46ef3e53aeea51931b96ea75ed87be/statements/BRANDING_NOTICE.md",
   "keywords": [
     "IPI"
   ],
@@ -16,10 +17,10 @@
   "license": "Apache-2.0",
   "author": "Sett Sarverott",
   "type": "module",
-  "main": "src/main.mjs",
+  "main": "src/index.mjs",
   "scripts": {
     "test": "vitest",
-    "start": "node src/index.js --repl",
+    "start": "node src/main.js --repl",
     "prepare": "husky"
   },
   "devDependencies": {
