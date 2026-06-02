@@ -15,16 +15,13 @@
    limitations under the License.
 
   for further growth and evolution of IPI DAO (https://ipi.io/) 
-
   disclaimer of trademark copyrights branding notice statement: 
   - https://github.com/ipicoin/.github/blob/ac7d86625f46ef3e53aeea51931b96ea75ed87be/statements/BRANDING_NOTICE.md
 */
-// lack of code, nothing to do
 
-class Transaction{
-    constructor(){
-        
-    }
-}
+import { expect, test } from 'vitest'
+import f from '../../src/models/wallet.mjs'
 
-export default Transaction
+test('...', () => {
+  expect(f).toBeDefined()
+})
