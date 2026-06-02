@@ -9,7 +9,7 @@ class Wallet{
     readAddress(){
 
     }
-    saveKeyfile(keyPath=){
+    saveKeyfile(keyPath){
 
         return 
     }
@@ -41,3 +41,5 @@ class Wallet{
         return new Wallet()
     }
 }
+
+export default Wallet

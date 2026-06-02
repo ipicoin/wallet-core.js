@@ -1,6 +1,6 @@
 
 
-
+import IPI_Models from '../models/_index.mjs';
 
 const { readFile } = require('fs/promises');
 const { DirectSecp256k1HdWallet } = require("@cosmjs/proto-signing");
@@ -8,7 +8,9 @@ const { SigningStargateClient, GasPrice } = require("@cosmjs/stargate");
 
 async function sendAmount(fromWallet, toAddress, tokenAmount, chainConfig, feeCalc="auto") {
 
-    if(fromWallet instanceof )
+    if(IPI_Models.check(fromWallet,)){
+        
+    }
 
     const [firstAccount] = await fromWallet.walletHook.getAccounts();
 
@@ -27,5 +29,6 @@ async function sendAmount(fromWallet, toAddress, tokenAmount, chainConfig, feeCa
     console.log("Transaction Hash:", result.transactionHash);
     
 }
+module.exports=sendAmount
 
 main().catch(console.error);
