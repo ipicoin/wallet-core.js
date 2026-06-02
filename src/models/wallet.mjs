@@ -2,6 +2,8 @@ import fs from "node:fs"
 import { URL } from "node:url"
 import path from "node:path"
 
+// becoming to be shaped under outlines of some concept of usage logics, yet it still do nothing spectacular
+
 class Wallet{
     getBallance(){
 
@@ -9,7 +11,7 @@ class Wallet{
     readAddress(){
 
     }
-    saveKeyfile(keyPath=){
+    saveKeyfile(keyPath){
 
         return 
     }
@@ -41,3 +43,5 @@ class Wallet{
         return new Wallet()
     }
 }
+
+export default Wallet
