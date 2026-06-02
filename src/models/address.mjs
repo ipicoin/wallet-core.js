@@ -27,9 +27,9 @@ class Address extends CoreModels {
 	// constructor() {
 	// 	super();
 	// }
-  static get PREFIX(){
-    return CoreModels.CHAIN.bech32Config.bech32PrefixAccAddr
-  }
+	static get PREFIX() {
+		return CoreModels.CHAIN.bech32Config.bech32PrefixAccAddr;
+	}
 	isPublicAddressValid(addressString) {
 		addressString;
 	}
