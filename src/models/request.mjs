@@ -24,9 +24,9 @@
 import CoreModels from "./_core.mjs";
 
 class Request extends CoreModels {
-	constructor() {
-		super();
-	}
+	// constructor() {
+	// 	super();
+	// }
 }
 
 export default Request;

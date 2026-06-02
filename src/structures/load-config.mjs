@@ -15,38 +15,15 @@
    limitations under the License.
 
   for further growth and evolution of IPI DAO (https://ipi.io/) 
+
+  disclaimer of trademark copyrights branding notice statement: 
+  - https://github.com/ipicoin/.github/blob/ac7d86625f46ef3e53aeea51931b96ea75ed87be/statements/BRANDING_NOTICE.md
 */
-import fs from "node:fs";
-import { URL } from "node:url";
-import path from "node:path";
 
-import CoreModels from "./_core.mjs";
+import { cosmiconfigSync } from "cosmiconfig";
 
-// becoming to be shaped under outlines of some concept of usage logics, yet it still do nothing spectacular
-
-class Wallet extends CoreModels {
-	getBallance() {}
-	readAddress() {}
-	saveKeyfile(keyPath) {
-		return;
-	}
-	loadKeyfile() {}
-	loadMnemonic() {}
-	// constructor() {
-	// 	super();
-	// }
-	sendTransmission() {}
-	listTransmissions() {}
-	listReceivings() {}
-	static load(keypath) {
-		return new Wallet();
-	}
-	static save(walletitem, keypath) {
-		return keypath;
-	}
-	static create() {
-		return new Wallet();
-	}
+function loadConfigData(){
+    return cosmiconfigSync("js-wallet-core").search();
 }
 
-export default Wallet;
+export default loadConfigData()
