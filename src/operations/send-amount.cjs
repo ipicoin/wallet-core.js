@@ -1,14 +1,16 @@
 
 
+import IPI_Models from '../models/_index.mjs';
 
-
-const { readFile } = require('fs/promises');
-const { DirectSecp256k1HdWallet } = require("@cosmjs/proto-signing");
-const { SigningStargateClient, GasPrice } = require("@cosmjs/stargate");
+const { readFile } = require('fs/promises'); // ALL CJS `require` HAVE TO BE REPLACED WITH MJS `import`
+const { DirectSecp256k1HdWallet } = require("@cosmjs/proto-signing");  // ALL CJS `require` HAVE TO BE REPLACED WITH MJS `import`
+const { SigningStargateClient, GasPrice } = require("@cosmjs/stargate");  // ALL CJS `require` HAVE TO BE REPLACED WITH MJS `import`
 
 async function sendAmount(fromWallet, toAddress, tokenAmount, chainConfig, feeCalc="auto") {
 
-    if(fromWallet instanceof )
+    if(IPI_Models.check(fromWallet,)){
+        
+    }
 
     const [firstAccount] = await fromWallet.walletHook.getAccounts();
 
@@ -27,5 +29,6 @@ async function sendAmount(fromWallet, toAddress, tokenAmount, chainConfig, feeCa
     console.log("Transaction Hash:", result.transactionHash);
     
 }
+module.exports=sendAmount  // CJS `module.exports=X` HAVE TO BE REPLACED WITH MJS `export default X`
 
 main().catch(console.error);
