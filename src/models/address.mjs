@@ -24,9 +24,12 @@
 import CoreModels from "./_core.mjs";
 
 class Address extends CoreModels {
-	constructor() {
-		super();
-	}
+	// constructor() {
+	// 	super();
+	// }
+  static get PREFIX(){
+    return CoreModels.CHAIN.bech32Config.bech32PrefixAccAddr
+  }
 	isPublicAddressValid(addressString) {
 		addressString;
 	}

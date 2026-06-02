@@ -1,5 +1,5 @@
 {
-	"name": "ipi-wallet-core",
+	"name": "js-wallet-core",
 	"version": "0.1.1",
 	"description": "IPI core of wallet package",
 	"BRANDING_NOTICE": "https://github.com/ipicoin/.github/blob/ac7d86625f46ef3e53aeea51931b96ea75ed87be/statements/BRANDING_NOTICE.md",
@@ -44,7 +44,7 @@
 		"socket.io": "^4.8.3",
 		"ssh2": "^1.17.0"
 	},
-	"ipi-wallet-core":{
+	"js-wallet-core":{
 		"chain": {
 		"chainId": "ipi-mainnet-2",
 		"chainName": "IPI Mainnet 2",

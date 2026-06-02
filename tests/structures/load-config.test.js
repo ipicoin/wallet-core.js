@@ -19,13 +19,32 @@
   disclaimer of trademark copyrights branding notice statement: 
   - https://github.com/ipicoin/.github/blob/ac7d86625f46ef3e53aeea51931b96ea75ed87be/statements/BRANDING_NOTICE.md
 */
-// lack of code, nothing to do
-import CoreModels from "./_core.mjs";
 
-class Contract extends CoreModels {
-	// constructor() {
-	// 	super();
-	// }
-}
 
-export default Contract;
+import { expect, test } from "vitest";
+import f from "../../src/structures/load-config.mjs";
+
+
+test("...", () => {
+	expect(f).toBeInstanceOf(Object);
+});
+
+// test("...", () => {
+//     //console.log(f.search())
+// 	expect(f.search()).toBeInstanceOf(Object);
+// });
+
+test("...", () => {
+    //console.log(f.search().config)
+	expect(f.config).toBeInstanceOf(Object);
+});
+
+test("...", () => {
+    //console.log(f.search().config.chain)
+	expect(f.config.chain).toBeInstanceOf(Object);
+});
+
+test("...", () => {
+    //console.log(f.search().config.chain.chainId)
+	expect(f.config.chain.chainId).toBe("ipi-mainnet-2");
+});
