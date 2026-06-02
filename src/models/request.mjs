@@ -20,10 +20,13 @@
   - https://github.com/ipicoin/.github/blob/ac7d86625f46ef3e53aeea51931b96ea75ed87be/statements/BRANDING_NOTICE.md
 */
 // lack of code, nothing to do
-class Request{
+
+import CoreModels from "./_core.mjs"
+
+class Request  extends CoreModels{
     constructor(){
-        
-    }
+    super()
+  }
 }
 
 export default Request

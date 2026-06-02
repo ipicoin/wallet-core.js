@@ -19,20 +19,23 @@
   disclaimer of trademark copyrights branding notice statement: 
   - https://github.com/ipicoin/.github/blob/ac7d86625f46ef3e53aeea51931b96ea75ed87be/statements/BRANDING_NOTICE.md
 */
+
+import CoreModels from "./_core.mjs"
+
 import Address from "./address.mjs"
 import Wallet from "./wallet.mjs"
 import Contract from "./contract.mjs"
 import Request from "./request.mjs"
 import Transaction from "./transaction.mjs"
 
-export default class IPI_Models{ // IPI_models as base for rest of them
+export default Object.assign(CoreModels, {
     /*
     this class shall provide extensible base for all model classes
     that should make it verification root parrent shared 
     across package beside containing unit that 
     allows access to all classes 
     */
-    static check(instance, checkname){
+    check(instance, checkname){
         switch(checkname){
             case "is-wallet":
             return instance instanceof Wallet
@@ -52,20 +55,20 @@ export default class IPI_Models{ // IPI_models as base for rest of them
             default:
             throw TypeError("not valid type of model")
         }
-    }
-    static get Address(){
+    },
+    get Address(){
         return Address
-    }
-    static get Wallet(){
+    },
+    get Wallet(){
         return Wallet
-    }
-    static get Contract(){
+    },
+    get Contract(){
         return Contract
-    }
-    static get Request(){
+    },
+    get Request(){
         return Request
-    }
-    static get Transaction(){
+    },
+    get Transaction(){
         return Transaction
     }
-}
+})

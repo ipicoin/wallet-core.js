@@ -21,10 +21,12 @@
 */
 // lack of code, nothing to do
 
-class Transaction{
+import CoreModels from "./_core.mjs"
+
+class Transaction extends CoreModels{
     constructor(){
-        
-    }
+    super()
+  }
 }
 
 export default Transaction

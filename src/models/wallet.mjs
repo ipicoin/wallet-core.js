@@ -20,9 +20,11 @@ import fs from "node:fs"
 import { URL } from "node:url"
 import path from "node:path"
 
+import CoreModels from "./_core.mjs"
+
 // becoming to be shaped under outlines of some concept of usage logics, yet it still do nothing spectacular
 
-class Wallet{
+class Wallet extends CoreModels{
     getBallance(){
 
     }
@@ -40,8 +42,8 @@ class Wallet{
 
     }
     constructor(){
-
-    }
+    super()
+  }
     sendTransmission(){
 
     }
