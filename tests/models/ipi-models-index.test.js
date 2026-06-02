@@ -19,21 +19,21 @@
   - https://github.com/ipicoin/.github/blob/ac7d86625f46ef3e53aeea51931b96ea75ed87be/statements/BRANDING_NOTICE.md
 */
 
-import { expect, test } from 'vitest'
-import f from '../../src/models/_index.mjs'
+import { expect, test } from "vitest";
+import f from "../../src/models/_index.mjs";
 
-test('...', () => {
-  expect(f).toBeDefined()
-})
-test('...', () => {
-  expect(new f.Address()).toBeInstanceOf(f)
-})
-test('...', () => {
-  expect(new f.Wallet()).toBeInstanceOf(f)
-})
-test('...', () => {
-  expect(new f.Request()).toBeInstanceOf(f)
-})
-test('...', () => {
-  expect(new f.Transaction()).toBeInstanceOf(f)
-})
+test("...", () => {
+	expect(f).toBeDefined();
+});
+test("...", () => {
+	expect(new f.Address()).toBeInstanceOf(f);
+});
+test("...", () => {
+	expect(new f.Wallet()).toBeInstanceOf(f);
+});
+test("...", () => {
+	expect(new f.Request()).toBeInstanceOf(f);
+});
+test("...", () => {
+	expect(new f.Transaction()).toBeInstanceOf(f);
+});

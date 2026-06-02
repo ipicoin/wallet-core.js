@@ -16,52 +16,37 @@
 
   for further growth and evolution of IPI DAO (https://ipi.io/) 
 */
-import fs from "node:fs"
-import { URL } from "node:url"
-import path from "node:path"
+import fs from "node:fs";
+import { URL } from "node:url";
+import path from "node:path";
 
-import CoreModels from "./_core.mjs"
+import CoreModels from "./_core.mjs";
 
 // becoming to be shaped under outlines of some concept of usage logics, yet it still do nothing spectacular
 
-class Wallet extends CoreModels{
-    getBallance(){
-
-    }
-    readAddress(){
-
-    }
-    saveKeyfile(keyPath){
-
-        return 
-    }
-    loadKeyfile(){
-
-    }
-    loadMnemonic(){
-
-    }
-    constructor(){
-    super()
-  }
-    sendTransmission(){
-
-    }
-    listTransmissions(){
-
-    }
-    listReceivings(){
-        
-    }
-    static load(keypath){
-        return new Wallet()
-    }
-    static save(walletitem, keypath){
-        return keypath
-    }
-    static create(){
-        return new Wallet()
-    }
+class Wallet extends CoreModels {
+	getBallance() {}
+	readAddress() {}
+	saveKeyfile(keyPath) {
+		return;
+	}
+	loadKeyfile() {}
+	loadMnemonic() {}
+	constructor() {
+		super();
+	}
+	sendTransmission() {}
+	listTransmissions() {}
+	listReceivings() {}
+	static load(keypath) {
+		return new Wallet();
+	}
+	static save(walletitem, keypath) {
+		return keypath;
+	}
+	static create() {
+		return new Wallet();
+	}
 }
 
-export default Wallet
+export default Wallet;

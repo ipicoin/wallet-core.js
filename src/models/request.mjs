@@ -21,12 +21,12 @@
 */
 // lack of code, nothing to do
 
-import CoreModels from "./_core.mjs"
+import CoreModels from "./_core.mjs";
 
-class Request  extends CoreModels{
-    constructor(){
-    super()
-  }
+class Request extends CoreModels {
+	constructor() {
+		super();
+	}
 }
 
-export default Request
+export default Request;

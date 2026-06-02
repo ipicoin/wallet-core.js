@@ -21,12 +21,12 @@
 */
 // lack of code, nothing to do
 
-import CoreModels from "./_core.mjs"
+import CoreModels from "./_core.mjs";
 
-class Transaction extends CoreModels{
-    constructor(){
-    super()
-  }
+class Transaction extends CoreModels {
+	constructor() {
+		super();
+	}
 }
 
-export default Transaction
+export default Transaction;
