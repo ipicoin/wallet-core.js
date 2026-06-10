@@ -14,9 +14,9 @@
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
 
-//   for further growth and evolution of IPI DAO (https://ipi.io/) 
+//   for further growth and evolution of IPI DAO (https://ipi.io/)
 
-//   disclaimer of trademark copyrights branding notice statement: 
+//   disclaimer of trademark copyrights branding notice statement:
 //   - https://github.com/ipicoin/.github/blob/ac7d86625f46ef3e53aeea51931b96ea75ed87be/statements/BRANDING_NOTICE.md
 // */
 
