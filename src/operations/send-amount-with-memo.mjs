@@ -20,38 +20,38 @@
   - https://github.com/ipicoin/.github/blob/ac7d86625f46ef3e53aeea51931b96ea75ed87be/statements/BRANDING_NOTICE.md
 */
 
-import IPI_Models from '../models/_index.mjs';
+import IPI_Models from "../models/_index.mjs";
 
 import { readFile } from "fs/promises"; // ALL CJS `require` HAVE TO BE REPLACED WITH MJS `import`
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing"; // ALL CJS `require` HAVE TO BE REPLACED WITH MJS `import`
 import { SigningStargateClient, GasPrice } from "@cosmjs/stargate"; // ALL CJS `require` HAVE TO BE REPLACED WITH MJS `import`
 
 async function sendAmountWithNote(
-  fromWallet,
-  toAddress,
-  tokenAmount,
-  chainConfig,
-  message,
-  feeCalc = "auto",
+	fromWallet,
+	toAddress,
+	tokenAmount,
+	chainConfig,
+	message,
+	feeCalc = "auto",
 ) {
-  if (IPI_Models.check(fromWallet)) {
-  }
+	if (IPI_Models.check(fromWallet)) {
+	}
 
-  const [firstAccount] = await fromWallet.walletHook.getAccounts();
+	const [firstAccount] = await fromWallet.walletHook.getAccounts();
 
-  const amountToSend = {
-    denom: config.denom,
-    tokenAmount, //: "1000000", // 1 token if 6 decimals
-  };
+	const amountToSend = {
+		denom: config.denom,
+		tokenAmount, //: "1000000", // 1 token if 6 decimals
+	};
 
-  const result = await client.sendTokens(
-    firstAccount.address,
-    recipient,
-    [amountToSend],
-    "auto", // Automatically calculates fee based on gasPrice in config
-    message,
-  );
-  console.log("Transaction Hash:", result.transactionHash);
+	const result = await client.sendTokens(
+		firstAccount.address,
+		recipient,
+		[amountToSend],
+		"auto", // Automatically calculates fee based on gasPrice in config
+		message,
+	);
+	console.log("Transaction Hash:", result.transactionHash);
 }
 
 export default sendAmount; // CJS `module.exports=X` HAVE TO BE REPLACED WITH MJS `export default X`
