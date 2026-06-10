@@ -1,6 +1,6 @@
 {
 	"name": "js-wallet-core",
-	"version": "0.2.2",
+	"version": "0.2.3",
 	"description": "IPI core of wallet package",
 	"BRANDING_NOTICE": "https://github.com/ipicoin/.github/blob/ac7d86625f46ef3e53aeea51931b96ea75ed87be/statements/BRANDING_NOTICE.md",
 	"keywords": [
