@@ -25,9 +25,8 @@ import CoreModels from "./_core.mjs";
 // becoming to be shaped under outlines of some concept of usage logics, yet it still do nothing spectacular
 
 class Wallet extends CoreModels {
-	
-	static get COIN_TYPE(){
-		return CoreModels.CHAIN.bip44.coinType
+	static get COIN_TYPE() {
+		return CoreModels.CHAIN.bip44.coinType;
 	}
 	getBallance() {}
 	readAddress() {}
