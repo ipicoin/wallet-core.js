@@ -20,7 +20,7 @@
   - https://github.com/ipicoin/.github/blob/ac7d86625f46ef3e53aeea51931b96ea75ed87be/statements/BRANDING_NOTICE.md
 */
 
-import IPI_Models from '../models/_index.mjs';
+import IPI_Models from "../models/_index.mjs";
 
 import { readFile } from "fs/promises"; // ALL CJS `require` HAVE TO BE REPLACED WITH MJS `import`
 import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing"; // ALL CJS `require` HAVE TO BE REPLACED WITH MJS `import`
