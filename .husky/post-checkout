@@ -1,1 +1,2 @@
 echo $0
+git push --all
