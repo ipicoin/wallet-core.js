@@ -21,18 +21,22 @@
 */
 
 import { EventEmitter } from "node:events";
-import chainConfig from "../structures/load-config.mjs";
+import walletCoreConfig from "../structures/load-config.mjs";
+import chainConfiguration from "chain";
 
 class CoreModels extends EventEmitter {
 	// IPI_models as base for rest of them
 	static get CHAIN() {
-		return chainConfig.config.chain;
+		return chainConfiguration;
 	}
 	static get CHAIN_ID() {
-		return chainConfig.config.chain.chainId;
+		return chainConfiguration.chainId;
 	}
 	static get CHAIN_NAME() {
-		return chainConfig.config.chain.chainName;
+		return chainConfiguration.chainName;
+	}
+	static get PRESETS() {
+		return walletCoreConfig;
 	}
 	// constructor() {
 	// 	super();
