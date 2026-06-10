@@ -1,2 +1,3 @@
 npm run forming
+git add .
 echo $0
