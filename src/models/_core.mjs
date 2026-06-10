@@ -28,10 +28,10 @@ class CoreModels extends EventEmitter {
 	static get CHAIN() {
 		return chainConfig.config.chain;
 	}
-  static get CHAIN_ID() {
+	static get CHAIN_ID() {
 		return chainConfig.config.chain.chainId;
 	}
-  static get CHAIN_NAME() {
+	static get CHAIN_NAME() {
 		return chainConfig.config.chain.chainName;
 	}
 	// constructor() {
