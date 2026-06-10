@@ -24,14 +24,20 @@
 import CoreModels from "./_core.mjs";
 
 class Address extends CoreModels {
-	// constructor() {
-	// 	super();
-	// }
+	constructor(addrStr) {
+		super();
+		if (!Address.isPublicAddressValid(addrStr))
+			throw TypeError(
+				"NON_VALID_ADDRESS",
+				`address "${addrStr}" is not wallet in chain`,
+			);
+		this.publicKey = addrStr;
+	}
 	static get PREFIX() {
 		return CoreModels.CHAIN.bech32Config.bech32PrefixAccAddr;
 	}
-	isPublicAddressValid(addressString) {
-		addressString;
+	static isPublicAddressValid(addressString) {
+		addressString instanceof String && addressString.startsWith(Address.PREFIX);
 	}
 }
 

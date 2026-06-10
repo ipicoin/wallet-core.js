@@ -44,7 +44,7 @@ class Wallet extends CoreModels {
 	static load(keypath) {
 		return new Wallet();
 	}
-	static save(walletitem, keypath) {
+	static save(walletItem, keypath) {
 		return keypath;
 	}
 	static create() {

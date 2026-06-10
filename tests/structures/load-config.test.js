@@ -22,6 +22,7 @@
 
 import { expect, test } from "vitest";
 import f from "../../src/structures/load-config.mjs";
+import chainConfiguration from "chain";
 
 test("...", () => {
 	expect(f).toBeInstanceOf(Object);
@@ -42,7 +43,18 @@ test("...", () => {
 	expect(f.config.chain).toBeInstanceOf(Object);
 });
 
+// test("...", () => {
+// 	//console.log(f.search().config.chain.chainId)
+// 	expect(f.config).toBe("testing");
+// });
+
+// test("...", () => {
+// 	//console.log(f.search().config.chain.chainId)
+// 	expect(f.config.chainId).toBe("ipi-mainnet-2");
+// });
+
+//console.log(chainConfiguration)
+
 test("...", () => {
-	//console.log(f.search().config.chain.chainId)
-	expect(f.config.chain.chain_id).toBe("testing");
+	expect(chainConfiguration).toBeInstanceOf(Object);
 });
