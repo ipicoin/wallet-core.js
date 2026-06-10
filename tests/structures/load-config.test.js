@@ -44,5 +44,5 @@ test("...", () => {
 
 test("...", () => {
 	//console.log(f.search().config.chain.chainId)
-	expect(f.config.chain.chainId).toBe("ipi-mainnet-2");
+	expect(f.config.chain.chain_id).toBe("testing");
 });
