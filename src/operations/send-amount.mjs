@@ -22,15 +22,18 @@
 
 import IPI_Models from "../models/_index.mjs";
 
-import { readFile } from "fs/promises"; // ALL CJS `require` HAVE TO BE REPLACED WITH MJS `import`
-import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing"; // ALL CJS `require` HAVE TO BE REPLACED WITH MJS `import`
-import { SigningStargateClient, GasPrice } from "@cosmjs/stargate"; // ALL CJS `require` HAVE TO BE REPLACED WITH MJS `import`
+import { readFile } from "fs/promises"; 
+import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing"; 
+import { SigningStargateClient, GasPrice } from "@cosmjs/stargate"; 
+
+const BLANK_MESSAGE_NOTE = `NO_MESSAGE_INCLUDED by wallet-core.js (UNIXUSAT=${Date.now()})`;
 
 async function sendAmount(
 	fromWallet,
 	toAddress,
 	tokenAmount,
 	chainConfig,
+	message = BLANK_MESSAGE_NOTE,
 	feeCalc = "auto",
 ) {
 	if (IPI_Models.check(fromWallet)) {
@@ -48,7 +51,8 @@ async function sendAmount(
 		recipient,
 		[amountToSend],
 		"auto", // Automatically calculates fee based on gasPrice in config
-		"NO_MESSAGE_INCLUDED by wallet-core (https://github.com/ipicoin/wallet-core.js)",
+		message
+		// "NO_MESSAGE_INCLUDED by wallet-core (https://github.com/ipicoin/wallet-core.js)",
 	);
 	console.log("Transaction Hash:", result.transactionHash);
 }
