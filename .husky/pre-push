@@ -1,2 +1,4 @@
 npm version patch
+git add .
+git commit
 echo $0
