@@ -20,5 +20,19 @@
   - https://github.com/ipicoin/.github/blob/ac7d86625f46ef3e53aeea51931b96ea75ed87be/statements/BRANDING_NOTICE.md
 */
 
+import repl from "node:repl";
+import WalletCore from "./index.mjs";
+
+console.log(
+	" # under `IPI` there is assigned wallet-core as imported package to play in cli",
+);
+
+const cliPromptCursor =
+	" (\x1b[33mWALLET-CORE\x1b[0m::\x1b[34mCLI_REPL\x1b[0m)> "; // " (WALLET-CORE::CLI_REPL)> "
+
+const CLI = repl.start(cliPromptCursor);
+
+CLI.context.IPI = WalletCore;
+
 // missleading main pointer in package.json, looks like it should be replaced with index.mjs
 // this file can act as REPL UI/CLI executible program handler script

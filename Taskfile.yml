@@ -9,10 +9,28 @@
 
 version: '3'
 
+var:
+  GIT_REPO_SOURCE: https://github.com/ipicoin/wallet-core.js.git
+  
 
 tasks:
+  download:
+    desc: for remote call 
+    cmds:
+      - git clone --recurse-submodules -j8 {{.GIT_REPO_SOURCE}}
+  init:
+    desc: run after downloading source code from repository
+    cmds:
+      - git fetch
+      - git pull
+      - npm i
+
   default:
     desc: start default launcher
     cmds:
       - npm start
     silent: true
+  demo:
+    desc: run cli agent with wallet core to use
+    cmds: 
+      - npm start
