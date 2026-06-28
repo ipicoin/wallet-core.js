@@ -19,4 +19,23 @@
   disclaimer of trademark copyrights branding notice statement: 
   - https://github.com/ipicoin/.github/blob/ac7d86625f46ef3e53aeea51931b96ea75ed87be/statements/BRANDING_NOTICE.md
 */
+import { Models } from "../index.mjs";
 
+import { makeCosmoshubPath } from "@cosmjs/amino";
+import { DirectSecp256k1HdWallet } from "@cosmjs/proto-signing";
+
+async function generateWalletKey() {
+	console.log("Generating a brand new wallet...");
+
+	// Explicitly derive path using BIP44 coinType (118)
+	const hdPath = makeCosmoshubPath(0); // Standard derivation for coinType 118
+
+	const wallet = await DirectSecp256k1HdWallet.generate(24, {
+		prefix: Models.wallet.prefix, // Sets prefix to "ipi"
+		hdPaths: [hdPath],
+	});
+
+	return wallet;
+}
+
+export default generateWalletKey;

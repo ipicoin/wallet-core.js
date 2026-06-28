@@ -23,6 +23,7 @@
 root of imports
 */
 import Models from "./models/_index.mjs";
+import Operations from "./operations/_index.mjs";
 // import Wallet from "@/src/models/wallet" // replace with single IPI_MODEL
 // import Address from "@/src/models/address" // replace with single IPI_MODEL
 // import Contract from "@/src/models/contract" // replace with single IPI_MODEL
@@ -32,4 +33,5 @@ import Models from "./models/_index.mjs";
 export default {
 	// here will be not just models - all usefull stuff should be passed here
 	Models,
+	Operations,
 };
