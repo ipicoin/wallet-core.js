@@ -1,12 +1,12 @@
 import BasicController from "./_controller.mjs";
-import ChainControll from "./chain-controller.mjs";
-import grpcClientControll from "./grpc-client-controll.mjs";
-import rpcClientControll from "./rpc-client-controll.mjs";
-import SignerControll from "./signer-controll.mjs";
+import ChainController from "./chain-controller.mjs";
+import NetclientController from "./netclient-controller.mjs";
+import ConfigController from "./config-controller.mjs";
+import SigningController from "./signing-controller.mjs";
 
 export default Object.assign(BasicController, {
-	rpcClientControll,
-	grpcClientControll,
-	SignerControll,
-	ChainControll,
+	ChainController,
+	NetclientController,
+	ConfigController,
+	SigningController,
 });

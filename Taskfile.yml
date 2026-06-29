@@ -30,3 +30,7 @@ tasks:
     desc: run cli agent with wallet core to use
     cmds: 
       - npm start
+
+  test:
+    cmds:
+      - npm test
