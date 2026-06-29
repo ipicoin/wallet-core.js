@@ -1,16 +1,12 @@
 # yaml-language-server: $schema=https://taskfile.dev/schema.json
 
-  # wallet-core v0.1.1 - https://github.com/ipicoin/wallet-core.js
-  # 2026 @ Sett Sarverott A.A.B. <sett@sarverott.com>
-  # for IPI DAO (https://ipi.io/) 
-  # disclaimer of trademark copyrights branding notice statement: 
-  # - https://github.com/ipicoin/.github/blob/ac7d86625f46ef3e53aeea51931b96ea75ed87be/statements/BRANDING_NOTICE.md
+  # wallet-core - 2026 @ Sett Sarverott A.A.B. <sett@sarverott.com>
 
 
 version: '3'
 
 var:
-  GIT_REPO_SOURCE: https://github.com/ipicoin/wallet-core.js.git
+  GIT_REPO_SOURCE: 
   
 
 tasks:
