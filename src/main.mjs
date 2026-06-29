@@ -1,3 +1,6 @@
+/*
+  wallet-core - Copyright 2026 Sett Sarverott A.A.B. <sett@sarverott.com>
+*/
 import repl from "node:repl";
 import WalletCore from "./index.mjs";
 
