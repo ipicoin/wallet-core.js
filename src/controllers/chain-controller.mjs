@@ -1,13 +1,16 @@
 /*
   wallet-core - Copyright 2026 Sett Sarverott A.A.B. <sett@sarverott.com>
 */
-import { cosmiconfigSync } from "cosmiconfig";
+
+import { ChainRegistryClient } from "@chain-registry/client";
 
 import Controller from "./_controller.mjs";
 
 class ChainController extends Controller {
-	loadConfigData() {
-		return cosmiconfigSync("wallet-core").search();
+	get client() {
+		return new ChainRegistryClient({
+			chainNames: Controller.ConfigController.chains,
+		});
 	}
 }
 
