@@ -5,10 +5,10 @@ import { cosmiconfigSync } from "cosmiconfig";
 
 import Controller from "./_controller.mjs";
 
-class ChainControll extends Controller {
+class ChainController extends Controller {
 	loadConfigData() {
 		return cosmiconfigSync("wallet-core").search();
 	}
 }
 
-export default ChainControll;
+export default ChainController;
