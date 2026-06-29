@@ -1,9 +1,9 @@
- // lack of code, nothing to do
+import CoreModels from "./_core.mjs";
 
-class Contract{
-    constructor(){
-        
-    }
+class Contract extends CoreModels {
+	// constructor() {
+	// 	super();
+	// }
 }
 
-export default Contract
+export default Contract;
