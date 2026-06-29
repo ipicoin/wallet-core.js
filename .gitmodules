@@ -1,3 +1,0 @@
-[submodule "reference-wiki"]
-	path = docs/reference
-	url = https://github.com/ipicoin/wallet-core.js.wiki.git

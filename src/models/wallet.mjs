@@ -48,7 +48,8 @@ class Wallet extends CoreModels {
 		return keypath;
 	}
 	static create() {
-		return new Wallet();
+		const walletContainer = new Wallet();
+		return;
 	}
 }
 

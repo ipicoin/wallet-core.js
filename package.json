@@ -1,20 +1,9 @@
 {
 	"name": "wallet-core",
 	"version": "0.2.14",
-	"description": "IPI core of wallet package",
-	"BRANDING_NOTICE": "https://github.com/ipicoin/.github/blob/ac7d86625f46ef3e53aeea51931b96ea75ed87be/statements/BRANDING_NOTICE.md",
-	"keywords": [
-		"IPI"
-	],
-	"homepage": "https://github.com/ipicoin/wallet-core.js#readme",
-	"bugs": {
-		"url": "https://github.com/ipicoin/wallet-core.js/issues"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/ipicoin/wallet-core.js.git"
-	},
-	"license": "Apache-2.0",
+	"description": "package for logic core of wallet in cosmos blockchain",
+	"keywords": [],
+	"license": "MIT",
 	"author": "Sett Sarverott",
 	"type": "module",
 	"main": "src/index.mjs",
@@ -41,13 +30,11 @@
 		"@cosmjs/proto-signing": "^0.39.0",
 		"@cosmjs/stargate": "^0.39.0",
 		"@passwordless-id/webauthn": "^2.4.0",
-		"chain": "github:ipicoin/chainconfig",
 		"cosmiconfig": "^9.0.1",
 		"socket.io": "^4.8.3",
 		"ssh2": "^1.17.0"
 	},
 	"wallet-core": {
-		"chain": {},
-		"gasprice": {}
+		"chains": {}
 	}
 }
