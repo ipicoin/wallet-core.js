@@ -1,8 +1,9 @@
- // lack of code, nothing to do
-class Request{
-    constructor(){
-        
-    }
+import CoreModels from "./_core.mjs";
+
+class Request extends CoreModels {
+	// constructor() {
+	// 	super();
+	// }
 }
 
-export default Request
+export default Request;
