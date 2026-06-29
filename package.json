@@ -1,6 +1,6 @@
 {
 	"name": "wallet-core",
-	"version": "0.2.14",
+	"version": "0.3.0",
 	"description": "package for logic core of wallet in cosmos blockchain",
 	"keywords": [],
 	"license": "MIT",
