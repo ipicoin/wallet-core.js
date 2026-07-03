@@ -11,8 +11,8 @@
  * the literals below with a runtime read (see `loadChainConfig` override hook).
  */
 export const IPI_CHAINCONFIG = {
-	// TODO SSOT: confirm chainId against chainconfig (Fala 0) before mainnet use.
-	chainId: "ipi-1",
+	// SSOT: chainId aligned with `ipicoin/chainconfig` (Fala 0).
+	chainId: "ipi-mainnet-2",
 	chainName: "ipicoin",
 	// bech32 account address prefix
 	bech32Prefix: "ipi",

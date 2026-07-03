@@ -7,10 +7,27 @@
 	"author": "Sett Sarverott",
 	"type": "module",
 	"main": "src/index.mjs",
+	"exports": {
+		".": "./src/index.mjs",
+		"./config": "./src/config/ipi-chainconfig.mjs"
+	},
+	"files": [
+		"src",
+		"README.md",
+		"LICENSE"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ipicoin/wallet-core.js.git"
+	},
+	"bugs": {
+		"url": "https://github.com/ipicoin/wallet-core.js/issues"
+	},
+	"homepage": "https://github.com/ipicoin/wallet-core.js#readme",
 	"scripts": {
 		"test": "vitest",
 		"start": "node src/main.mjs --repl",
-		"prepare": "husky",
+		"prepare": "husky || true",
 		"forming": "biome format --write ./"
 	},
 	"devDependencies": {
