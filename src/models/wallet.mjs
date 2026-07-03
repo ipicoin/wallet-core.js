@@ -1,65 +1,41 @@
 /*
-    wallet-core v0.1.1 - https://github.com/ipicoin/wallet-core.js
-  Copyright 2026 Sett Sarverott A.A.B. <sett@sarverott.com>
-
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
-
-  for further growth and evolution of IPI DAO (https://ipi.io/) 
+  wallet-core - Copyright 2026 Sett Sarverott A.A.B. <sett@sarverott.com>
 */
-import fs from "node:fs"
-import { URL } from "node:url"
-import path from "node:path"
+import fs from "node:fs";
+import path from "node:path";
+import { URL } from "node:url";
+
+import CoreModels from "./_core.mjs";
 
 // becoming to be shaped under outlines of some concept of usage logics, yet it still do nothing spectacular
 
-class Wallet{
-    getBallance(){
-
-    }
-    readAddress(){
-
-    }
-    saveKeyfile(keyPath){
-
-        return 
-    }
-    loadKeyfile(){
-
-    }
-    loadMnemonic(){
-
-    }
-    constructor(){
-
-    }
-    sendTransmission(){
-
-    }
-    listTransmissions(){
-
-    }
-    listReceivings(){
-        
-    }
-    static load(keypath){
-        return new Wallet()
-    }
-    static save(walletitem, keypath){
-        return keypath
-    }
-    static create(){
-        return new Wallet()
-    }
+class Wallet extends CoreModels {
+	static get COIN_TYPE() {
+		return CoreModels.CHAIN.bip44.coinType;
+	}
+	getBallance() {}
+	readAddress() {}
+	saveKeyfile(keyPath) {
+		return;
+	}
+	loadKeyfile() {}
+	loadMnemonic() {}
+	// constructor() {
+	// 	super();
+	// }
+	sendTransmission() {}
+	listTransmissions() {}
+	listReceivings() {}
+	static load(keypath) {
+		return new Wallet();
+	}
+	static save(walletItem, keypath) {
+		return keypath;
+	}
+	static create() {
+		const walletContainer = new Wallet();
+		return;
+	}
 }
 
-export default Wallet
+export default Wallet;
