@@ -59,4 +59,17 @@ describe("adapters", () => {
 		expect(typeof signer.signDirect).toBe("function");
 		expect(typeof signer.getAccounts).toBe("function");
 	});
+
+	test("PIV advertises secp256r1 (P-256), NOT secp256k1", () => {
+		// PIV ECC = NIST P-256; it cannot produce secp256k1 signatures. Reaching
+		// e2e signing requires a chain-side secp256r1 verifier (Fala 0/1).
+		const signer = createHardwareSigner("yubikeyPiv");
+		expect(signer.algo).toBe("secp256r1");
+		expect(signer.algo).not.toBe("secp256k1");
+	});
+
+	test("WebAuthn advertises a P-256 (non-secp256k1) algo", () => {
+		const signer = createHardwareSigner("webauthn");
+		expect(signer.algo).not.toBe("secp256k1");
+	});
 });

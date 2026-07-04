@@ -114,9 +114,24 @@ export class HardwareSigner {
 /**
  * WebAuthn / passkey adapter.
  *
- * Caveat: WebAuthn authenticators sign with ES256 (secp256r1 / P-256), which is
- * NOT Cosmos' secp256k1. Either (a) use an authenticator that supports the
- * `secp256k1` COSE algorithm, or (b) register a custom pubkey type on-chain.
+ * Caveat 1 — curve: WebAuthn authenticators sign with ES256 (secp256r1 / P-256),
+ * which is NOT Cosmos' secp256k1.
+ *
+ * Caveat 2 — signature ENVELOPE (the blocking one): even with a matching curve,
+ * WebAuthn never signs the raw bytes you hand it. The authenticator signs
+ * `authenticatorData || SHA-256(clientDataJSON)`, where the SignDoc hash only
+ * appears indirectly as the `challenge` field inside clientDataJSON. A Cosmos
+ * verifier for a stock `secp256k1.PubKey` expects a signature over
+ * `SHA-256(SignDoc)` directly, so it can NEVER validate a WebAuthn assertion —
+ * the signed message is a different structure entirely.
+ *
+ * Consequence: a WebAuthn-backed IPI account is **not achievable in wallet-core
+ * alone**. It requires a chain-side module in the daemon (Fala 0/1 scope): a
+ * custom pubkey type + a verifier that re-derives `authenticatorData ||
+ * SHA-256(clientDataJSON)`, checks the SignDoc hash inside the challenge, and
+ * only then verifies the P-256 signature. Using an authenticator that advertises
+ * the `secp256k1` COSE algorithm fixes only the curve, NOT this envelope.
+ *
  * The passkey library (`@passwordless-id/webauthn`, already a dependency) is
  * used for the browser ceremony; org fork: ipicoin/webauthn.
  */
@@ -142,18 +157,32 @@ export class WebAuthnSigner extends HardwareSigner {
 	}
 
 	async signDirect(_signerAddress, _signDoc) {
-		// TODO: hash SignDoc → challenge; call navigator.credentials.get();
-		// map the authenticator assertion into a Cosmos DirectSignResponse.
+		// TODO: SHA-256(SignDoc) → use as WebAuthn `challenge`;
+		// call navigator.credentials.get(); collect the assertion.
+		// BLOCKED chain-side: the assertion signs
+		// `authenticatorData || SHA-256(clientDataJSON)`, NOT SHA-256(SignDoc).
+		// A stock secp256k1 verifier cannot check this envelope; the daemon needs
+		// a custom pubkey type + WebAuthn-aware verifier (Fala 0/1). There is no
+		// DirectSignResponse mapping that a stock Cosmos AnteHandler would accept.
 		throw new Error(
-			"WebAuthnSigner.signDirect(): TODO — WebAuthn assertion → DirectSignResponse",
+			"WebAuthnSigner.signDirect(): TODO — needs chain-side WebAuthn verifier (envelope != raw SignDoc)",
 		);
 	}
 }
 
 /**
- * YubiKey PIV adapter (PKCS#11 / PIV slot, secp256k1 or NIST P-256).
+ * YubiKey PIV adapter (PKCS#11 / PIV slot).
  * Org fork: ipicoin/yubico-piv-tool. Node bridge over PKCS#11 or the
  * `yubico-piv-tool` CLI / libykcs11.
+ *
+ * IMPORTANT — curve: the PIV applet does **NOT** support Cosmos' secp256k1.
+ * PIV ECC slots only do the NIST curves **P-256 (secp256r1)** and P-384
+ * (Ed25519 exists only on firmware ≥ 5.7 with a non-PIV slot type). This
+ * adapter therefore advertises `secp256r1`, which stock Cosmos SDK cannot
+ * verify. Reaching a working signature is **not possible in wallet-core alone**:
+ * it requires chain-side support — a `secp256r1` pubkey type plus an AnteHandler
+ * / signature verifier registered in the daemon (scope of Fala 0/1), not just
+ * this client scaffold.
  */
 export class YubiKeyPivSigner extends HardwareSigner {
 	/**
@@ -163,7 +192,9 @@ export class YubiKeyPivSigner extends HardwareSigner {
 	 * @param {string} [opts.prefix="ipi"]
 	 */
 	constructor({ slot = "9c", pin, prefix = "ipi" } = {}) {
-		super({ prefix, algo: "secp256k1" });
+		// PIV ECC = NIST P-256 (secp256r1), NOT secp256k1. Requires a chain-side
+		// secp256r1 pubkey type + verifier before any signature is accepted.
+		super({ prefix, algo: "secp256r1" });
 		this.slot = slot;
 		this.pin = pin;
 	}
@@ -171,6 +202,8 @@ export class YubiKeyPivSigner extends HardwareSigner {
 	async getPublicKey() {
 		// TODO: read the PIV slot certificate/public key via PKCS#11 (libykcs11)
 		// or `yubico-piv-tool` (fork: ipicoin/yubico-piv-tool).
+		// NOTE: this returns a P-256 (secp256r1) key — stock Cosmos expects
+		// secp256k1, so the daemon must register a secp256r1 pubkey type first.
 		throw new Error(
 			"YubiKeyPivSigner.getPublicKey(): TODO — read PIV slot pubkey (PKCS#11)",
 		);
@@ -179,8 +212,11 @@ export class YubiKeyPivSigner extends HardwareSigner {
 	async signDirect(_signerAddress, _signDoc) {
 		// TODO: SHA-256(SignDoc bytes) → PIV sign on slot → DER→raw signature →
 		// build Cosmos DirectSignResponse.
+		// BLOCKED chain-side: the resulting P-256/ECDSA signature cannot be
+		// verified by a stock secp256k1 AnteHandler; needs a daemon-side
+		// secp256r1 verifier (Fala 0/1), not achievable in wallet-core alone.
 		throw new Error(
-			"YubiKeyPivSigner.signDirect(): TODO — PIV sign via PKCS#11",
+			"YubiKeyPivSigner.signDirect(): TODO — PIV sign via PKCS#11 (requires chain-side secp256r1 verifier)",
 		);
 	}
 }
