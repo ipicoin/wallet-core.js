@@ -102,6 +102,8 @@ export async function mnemonicToAccount(
  * @param {object} [opts]
  * @param {string} [opts.prefix] bech32 prefix (default "ipi").
  * @param {number} [opts.coinType] coin type (default 118).
+ * @param {number} [opts.account=0] HD account index (path `m/44'/coinType'/account'/0/index`).
+ * @param {number} [opts.index=0] HD address index.
  * @param {string} [opts.gasPrice] gas price string, e.g. "0.025nipi".
  * @returns {Promise<{client:SigningStargateClient, wallet:DirectSecp256k1HdWallet}>}
  */
@@ -111,12 +113,14 @@ export async function getSigningClient(
 	{
 		prefix = IPI_CHAINCONFIG.bech32Prefix,
 		coinType = IPI_CHAINCONFIG.coinType,
+		account = 0,
+		index = 0,
 		gasPrice = IPI_CHAINCONFIG.gasPrice,
 	} = {},
 ) {
 	const wallet = await DirectSecp256k1HdWallet.fromMnemonic(mnemonic, {
 		prefix,
-		hdPaths: [makeHdPath(coinType)],
+		hdPaths: [makeHdPath(coinType, account, index)],
 	});
 	const client = await SigningStargateClient.connectWithSigner(rpc, wallet, {
 		gasPrice: GasPrice.fromString(gasPrice),

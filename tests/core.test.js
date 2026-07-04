@@ -55,6 +55,15 @@ describe("makeHdPath (BIP44)", () => {
 		expect(path[1].isHardened()).toBe(true);
 		expect(path[1].toNumber()).toBe(0x80000000 + 118);
 	});
+
+	test("account and index land in the right path positions", () => {
+		// m/44'/coinType'/account'/0/index
+		const path = makeHdPath(118, 3, 7);
+		expect(path[2].isHardened()).toBe(true);
+		expect(path[2].toNumber()).toBe(0x80000000 + 3); // account (hardened)
+		expect(path[4].isHardened()).toBe(false);
+		expect(path[4].toNumber()).toBe(7); // index (normal)
+	});
 });
 
 describe("mnemonicToAccount (HD derivation)", () => {
@@ -79,6 +88,16 @@ describe("mnemonicToAccount (HD derivation)", () => {
 		const mnemonic = generateMnemonic();
 		const acct = await mnemonicToAccount(mnemonic);
 		expect(acct.address.startsWith("ipi")).toBe(true);
+	});
+
+	test("different account / index derive different addresses", async () => {
+		// Guards the getSigningClient fix: non-zero account/index must be reachable.
+		const base = await mnemonicToAccount(TEST_MNEMONIC);
+		const otherAccount = await mnemonicToAccount(TEST_MNEMONIC, { account: 1 });
+		const otherIndex = await mnemonicToAccount(TEST_MNEMONIC, { index: 1 });
+		expect(otherAccount.address).not.toBe(base.address);
+		expect(otherIndex.address).not.toBe(base.address);
+		expect(otherAccount.address).not.toBe(otherIndex.address);
 	});
 });
 
