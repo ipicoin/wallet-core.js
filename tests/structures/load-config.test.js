@@ -1,36 +1,26 @@
-// /*
-//   wallet-core - Copyright 2026 Sett Sarverott A.A.B. <sett@sarverott.com>
-// */
+import { expect, test } from "vitest";
 
-// import { expect, test } from "vitest";
-// import f from "../../src/structures/load-config.mjs";
+import CoreModels from "../../src/models/_core.mjs";
 
-// test("...", () => {
-// 	expect(f).toBeInstanceOf(Object);
-// });
+test("requires an explicit chain configuration", () => {
+	expect(() => CoreModels.configure()).toThrowError(
+		"A chain configuration object is required",
+	);
+});
 
-// // test("...", () => {
-// //     //console.log(f.search())
-// // 	expect(f.search()).toBeInstanceOf(Object);
-// // });
+test("exposes validated chain configuration and presets", () => {
+	const chain = {
+		chainId: "ipi-test-1",
+		chainName: "IPI Test",
+		bech32Config: { bech32PrefixAccAddr: "ipi" },
+		currencies: [],
+	};
+	const presets = { endpointPolicy: "test-only" };
 
-// test("...", () => {
-// 	//console.log(f.search().config)
-// 	expect(f.config).toBeInstanceOf(Object);
-// });
+	CoreModels.configure({ chain, presets });
 
-// test("...", () => {
-// 	//console.log(f.search().config.chain)
-// 	expect(f.config.chain).toBeInstanceOf(Object);
-// });
-
-// // test("...", () => {
-// // 	//console.log(f.search().config.chain.chainId)
-// // 	expect(f.config).toBe("testing");
-// // });
-
-// //console.log(chainConfiguration)
-
-// test("...", () => {
-// 	expect(chainConfiguration).toBeInstanceOf(Object);
-// });
+	expect(CoreModels.CHAIN).toBe(chain);
+	expect(CoreModels.CHAIN_ID).toBe("ipi-test-1");
+	expect(CoreModels.CHAIN_NAME).toBe("IPI Test");
+	expect(CoreModels.PRESETS).toBe(presets);
+});

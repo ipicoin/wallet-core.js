@@ -1,3 +1,1 @@
-npm run forming
-git add .
-echo $0
+npm test -- --run

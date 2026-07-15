@@ -1,2 +1,1 @@
-git push --all
-echo $0
+# Intentionally empty. Commits must never push automatically.
