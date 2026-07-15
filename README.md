@@ -22,6 +22,22 @@ npm install
 npm start
 ```
 
+Configure the model layer explicitly before using chain-dependent fields or
+address validation:
+
+```js
+import WalletCore from "wallet-core";
+
+WalletCore.Models.configure({
+  chain: {
+    chainId: "ipi-test-1",
+    chainName: "IPI Test",
+    bech32Config: { bech32PrefixAccAddr: "ipi" },
+    currencies: [{ coinDenom: "IPI", coinMinimalDenom: "nipi" }],
+  },
+});
+```
+
 Run the test suite with:
 
 ```sh
