@@ -34,7 +34,7 @@ class Wallet extends CoreModels {
 	}
 	static create() {
 		const walletContainer = new Wallet();
-		return;
+		return walletContainer;
 	}
 }
 
