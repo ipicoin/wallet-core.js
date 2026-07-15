@@ -1,3 +1,1 @@
-echo $0
-git push --all
-npm version preminor
+# Intentionally empty. Checkout must not push or change package versions.

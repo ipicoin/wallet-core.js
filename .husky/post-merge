@@ -1,2 +1,1 @@
-echo $0
-npm version minor
+# Intentionally empty. Merges must not change package versions.
