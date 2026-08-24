@@ -1,65 +1,69 @@
 # IPI Wallet Core for JavaScript
 
-An experimental JavaScript library for Cosmos-compatible wallet models and
-operations.
+JavaScript model and validation layer for IPI/Cosmos wallet development.
 
-> **Status: pre-alpha.** This package is not ready to protect real assets. Key
-> generation and import, transaction construction, address validation, network
-> responses, and recovery behavior require a documented threat model,
-> compatibility fixtures, independent review, and release controls.
+## Verified surface
 
-## Current surface
+The package exports `Models` and `Operations` from `src/index.mjs`. The tested
+surface currently covers:
 
-The package exports `Models` and `Operations` from `src/index.mjs`. The current
-tree includes models for wallets, addresses, requests, transactions, and
-contracts, together with early operations for wallet creation/import, balance
-queries, address validation, and transfers.
+- configurable Cosmos chain metadata;
+- 20-byte Bech32 account validation against the configured prefix;
+- wallet, address, request, transaction, and contract model construction; and
+- shared model type checks and event-capable base structures.
 
-The command below starts a Node.js REPL with the package exposed as `IPI`:
+Seven test files contain eleven passing tests for the model and configuration
+layer:
+
+The current dependency graph requires Node.js `^20.19.0` or `>=22.12.0`; the
+verified audit environment used Node 24.
 
 ```sh
 npm install
-npm start
+npm test -- --run
 ```
 
-Configure the model layer explicitly before using chain-dependent fields or
-address validation:
+Configure the model layer before constructing chain-dependent objects:
 
 ```js
-import WalletCore from "wallet-core";
+import WalletCore from "./src/index.mjs";
 
 WalletCore.Models.configure({
   chain: {
-    chainId: "ipi-test-1",
-    chainName: "IPI Test",
+    chainId: "ipi-testnet-1",
+    chainName: "IPI Testnet",
+    bip44: { coinType: 118 },
     bech32Config: { bech32PrefixAccAddr: "ipi" },
-    currencies: [{ coinDenom: "IPI", coinMinimalDenom: "nipi" }],
+    currencies: [{ coinDenom: "IPI", coinMinimalDenom: "aipi" }],
   },
 });
 ```
 
-Run the test suite with:
+## Incomplete operations
 
-```sh
-npm test
-```
+Files for mnemonic import, key generation, balance queries, and token transfer
+exist under `src/operations`, but they are not a working supported transaction
+API. The current implementations contain unresolved imports/configuration,
+undefined transaction variables, or empty bodies and have no behavioral tests.
+They must not be presented or consumed as completed signing workflows.
 
-## Security boundaries
+The package also declares broader Cosmos, CosmWasm, InterchainJS, WebAuthn,
+Socket.IO, SSH, and chain-registry dependencies. A declared dependency is not
+evidence that the corresponding feature is integrated.
 
-Never use test mnemonics or keys for assets of value. Do not commit secrets.
-Callers must verify chain identity, endpoint trust, denominations, transaction
-messages, fees, and signer intent. An RPC response is untrusted input and is
-not independently verified state merely because the client received it.
+## Development status
 
-Security-sensitive findings must use the private reporting process in the IPI
+**Active development — model layer implemented, wallet operations incomplete.**
+This package is not ready to protect real assets. A supported wallet-core
+release requires a stable API, deterministic signing and transaction fixtures,
+fee and denomination handling, endpoint and chain verification, recovery and
+migration tests, audited key handling, dependency remediation, signed releases,
+and an explicit support policy.
+
+An RPC response is untrusted input and is not independently verified state
+merely because a client received it. Never use test mnemonics or keys for assets
+of value, and never commit secrets. Report vulnerabilities through the IPI
 [security policy](https://github.com/ipicoin/.github/blob/main/SECURITY.md).
-
-## Road to a supported release
-
-A supported release requires a stable documented API, deterministic fixtures,
-cross-wallet compatibility tests, audited key handling, dependency and
-supply-chain controls, signed versioned releases, migration guidance, and an
-explicit maintenance commitment.
 
 ## License
 
